@@ -1,13 +1,34 @@
-
 version: '3'
 services:
   nginx:
     image: nginx
     ports:
       - "80:80"
-      - "8080:8080"
     restart: on-failure
+    depends_on:
+      - back
     volumes:
       - ./app/dist:/var/www/html
       - ./volumes/nginx/conf.d/:/etc/nginx/conf.d
       - ./volumes/nginx/logs/nginx:/var/log/nginx
+  back:
+    image: seqfu/python-3.11-alpine-requests
+    environment:
+      - DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - DATASOURCE_USERNAME=compose-postgres
+      - DATASOURCE_PASSWORD=compose-postgres
+    depends_on:
+      - db
+    restart: on-failure
+    ports:
+      - "8080:8080"
+  db:
+    image: 'postgres:14-alpine'
+    container_name: auth_db
+    user: root
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - ./volumes/db/auth:/var/lib/postgresql/data
+    restart: on-failure
