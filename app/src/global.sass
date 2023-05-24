@@ -1,0 +1,76 @@
+
+$background-color: #1B1B1B
+$primary-color : #CBA135
+
+body
+  margin: 0
+  padding: 0
+  font-family: CaslonBold, 'sans-serif'
+  background-color: $background-color
+  overflow-y: hidden
+
+h1, h2, h3, h4, h5, h6, p, a
+  margin-block: 0
+  padding-block: 0
+  color: $primary-color
+
+.lines
+  position: absolute
+  height: 1360px
+  display: flex
+  justify-content: center
+  gap: 100px
+  z-index: -9999
+  &--line
+    height: 100%
+    width: 1px
+    background-color: rgba(203, 161, 53, 0.2)
+
+.pattern
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -9999
+  user-focus: none
+  user-select: none
+  pointer-events: none
+
+@font-face
+  font-family: "CaslonBold"
+  src: url("assets/fonts/caslon-font/CaslonBold-JwYa.ttf") format("truetype")
+  font-style: normal
+  font-weight: normal
+
+@font-face
+  font-family: "CaslonItalic"
+  src: url("assets/fonts/caslon-font/Caslonitalic-GXRq.ttf") format("truetype")
+  font-style: normal
+  font-weight: normal
+
+@font-face
+  font-family: "CaslonRoman"
+  src: url("assets/fonts/caslon-font/Caslonroman-j7lR.ttf") format("truetype")
+  font-style: normal
+  font-weight: normal
+
+@font-face
+  font-family: "SchoonheidContextual"
+  src: url("assets/fonts/schoonheid-font/SchoonheidContextualCapitals-1GvB0.otf") format("truetype")
+  font-style: normal
+  font-weight: normal
+
+@font-face
+  font-family: "SchoonheidItalic"
+  src: url("assets/fonts/schoonheid-font/SchoonheidItalic-RpjRV.otf") format("truetype")
+  font-style: normal
+  font-weight: normal
+
+@font-face
+  font-family: "SchoonheidRegular"
+  src: url("assets/fonts/schoonheid-font/SchoonheidRegular-nRwpV.otf") format("truetype")
+  font-style: normal
+  font-weight: normal
