@@ -1,30 +1,116 @@
-import pattern from "../assets/pattern.png";
-import jesus from "../assets/jesus.png";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { animated, config, useSpring, useTransition } from "react-spring";
+
+import pattern from "../assets/pattern.webp";
+import jesus from "../assets/jesus.webp";
 
 export default function IndexPage() {
+    const [text, setText] = useState("Magis detailed");
+    const [flag, setFlag] = useState(false)
+
     return <main>
         <div className={"lines"}>
             {Array.from(
                 {length: window.innerWidth / 100},
                 (_, index) => index + 1)
-                .map((val) =>
-                    <div className={"lines--line"}/>)
+                .map(() => <div className={"lines--line"} style={{height: window.innerHeight}}/>)
             }
         </div>
         <section className={"hero"}>
             <img className={"pattern"} src={pattern} alt=""/>
             <div className={"hero--container"}>
                 <div className={"hero--container--heading"}>
-                    <h1 className={"hero--container--heading--title"}>Auxilium</h1>
+                    <animated.h1 className={"hero--container--heading--title"} style={useSpring({
+                        from : {
+                            y : 100,
+                            opacity : 0
+                        },
+                        to : {
+                            y : 0,
+                            opacity : 1
+                        },
+                        delay : 800,
+                        config : config.slow
+                    })}>
+                        { ['A', 'u', 'x', 'i', 'l', 'i', 'u', 'm'].map((value, index) => <animated.span style={useSpring({
+                            from : {
+                                y : 100,
+                                opacity : 0
+                            },
+                            to : {
+                                y : 0,
+                                opacity : 1
+                            },
+                            delay : 800 + (index * 50),
+                            config : config.slow
+                        })}>{value}</animated.span>)
+
+                        }
+                    </animated.h1>
                     <p className={"hero--container--heading--description"}>
                         Etiam Christus auxilio fuit ad crucem suam portandam
                     </p>
                 </div>
-                <Link className={"hero--container--link"} to={''}>
-                    Magis detailed
-                </Link>
-                <img className={"jesus"} src={jesus} alt=""/>
+                <animated.a className={"hero--container--link"} href={''}
+                            onMouseEnter={() => {if (!flag) setFlag(true)}}
+                            onMouseLeave={() => {if (flag) setFlag(false)}}
+                            style={useSpring({
+                                from : {
+                                    y : 100,
+                                    opacity : 0
+                                },
+                                to : {
+                                    y : 0,
+                                    opacity : 1
+                                },
+                                delay : 700,
+                                config : config.slow
+                            })}>
+                    {(text.split('')).map((value, index) => <animated.span style={useSpring({
+                        from : {
+                            y : 100,
+                            opacity : 0
+                        },
+                        to : {
+                            y : 0,
+                            opacity : 1
+                        },
+                        delay : 800 + (index * 50),
+                        config : config.slow
+                    })}>{value}</animated.span>)}
+                </animated.a>
+                <animated.img className={"jesus"} src={jesus} alt="" style={useSpring({
+                    from : {
+                        y : 100,
+                        opacity : 0
+                    },
+                    to : {
+                        y : 0,
+                        opacity : 1
+                    },
+                    delay : 600,
+                    config : config.slow
+                })}/>
+                <div className={'image-glitch'} style={{display : flag ? "auto" : "none"}}>
+                    <animated.img className={"jesus"} src={jesus} alt="" style={useSpring({
+                        from : {
+                            y : 100,
+                            opacity : 0
+                        },
+                        to : {
+                            y : 0,
+                            opacity : 1
+                        },
+                        delay : 600,
+                        config : config.slow
+                    })}/>
+                    <div className="image-glitch__layers">
+                        <div className="image-glitch__layer"></div>
+                        <div className="image-glitch__layer"></div>
+                        <div className="image-glitch__layer"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

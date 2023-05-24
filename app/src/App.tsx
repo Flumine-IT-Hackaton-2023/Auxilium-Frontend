@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 import './global.sass'
 import './styles/index.sass'
+import './styles/glitch.sass'
 
 import { RouterProvider } from "react-router-dom";
 import { Router } from "./router";

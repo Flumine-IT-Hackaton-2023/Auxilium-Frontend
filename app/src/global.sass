@@ -2,21 +2,34 @@
 $background-color: #1B1B1B
 $primary-color : #CBA135
 
+html
+  scroll-behavior: smooth
+
 body
   margin: 0
   padding: 0
   font-family: CaslonBold, 'sans-serif'
   background-color: $background-color
-  overflow-y: hidden
+  -moz-appearance: none
+  -webkit-appearance: none
+  overflow-x: hidden
+
+::-webkit-scrollbar
+  width: 0
 
 h1, h2, h3, h4, h5, h6, p, a
   margin-block: 0
   padding-block: 0
   color: $primary-color
 
+a
+  text-decoration: none
+
 .lines
   position: absolute
-  height: 1360px
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
   display: flex
   justify-content: center
   gap: 100px
@@ -43,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p, a
   font-family: "CaslonBold"
   src: url("assets/fonts/caslon-font/CaslonBold-JwYa.ttf") format("truetype")
   font-style: normal
-  font-weight: normal
+  font-weight: bold
 
 @font-face
   font-family: "CaslonItalic"
@@ -66,7 +79,7 @@ h1, h2, h3, h4, h5, h6, p, a
 @font-face
   font-family: "SchoonheidItalic"
   src: url("assets/fonts/schoonheid-font/SchoonheidItalic-RpjRV.otf") format("truetype")
-  font-style: normal
+  font-style: italic
   font-weight: normal
 
 @font-face
