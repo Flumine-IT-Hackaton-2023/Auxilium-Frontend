@@ -42,11 +42,11 @@
 
 .sign-in,
 .sign-up
-  padding-top: 250px
+  padding-top: 100px
   &--container
     @include container
     &--title
-      font-size: 100px
+      font-size: 96px
       letter-spacing: .4em
     &--form
       width: 460px
@@ -98,6 +98,59 @@
           letter-spacing: .4em
           text-align: center
 
+.app
+  &--container
+    @include container
+    max-width: 1400px
+    @media screen and (width > 1440px)
+      max-width: 1440px
+    @media screen and (width > 1880px)
+      max-width: 1640px
+    &--content
+      position: relative
+      margin-top: 50px
+      width: 100%
+      height: 90vh
+      background-color: rgba(27, 27, 27, 0.5)
+      border-radius: 5px
+      border: 1px solid #CBA135
+      overflow: hidden
+      &--form
+        position: absolute
+        bottom: 0
+        right: 0
+        left: 200px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &--input
+          width: 100%
+          font-size: 18px
+          font-family: CaslonBold, sans-serif
+          background-color: #1B1B1B
+          padding: 20px 20px
+          color: #CBA135
+          border: none
+          letter-spacing: .4em
+          &::placeholder
+            color: rgba(203, 161, 53, 0.7)
+            letter-spacing: .4em
+          &:focus
+            color: #CBA135
+        &--button
+          font-size: 18px
+          border: none
+          border-radius: 5px
+          font-family: CaslonBold, sans-serif
+          background-color: #1B1B1B
+          padding: 20px 20px
+          color: rgba(203, 161, 53, 0.7)
+          letter-spacing: .4em
+          cursor: pointer
+          transition: 300ms ease-in
+          &:hover
+            background-color: #CBA135
+            color: #1B1B1B
 
 .jesus
   position: absolute
