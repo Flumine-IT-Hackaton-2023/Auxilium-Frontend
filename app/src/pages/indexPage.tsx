@@ -6,7 +6,7 @@ import pattern from "../assets/pattern.webp";
 import jesus from "../assets/jesus.webp";
 
 export default function IndexPage() {
-    const [text, setText] = useState("Magis detailed");
+    const [text, setText] = useState("More detailed");
     const [flag, setFlag] = useState(false)
 
     return <main>
@@ -42,19 +42,15 @@ export default function IndexPage() {
                                 y : 0,
                                 opacity : 1
                             },
-                            delay : 800 + (index * 50),
+                            delay : 800 + (index * 70),
                             config : config.slow
-                        })}>{value}</animated.span>)
-
-                        }
+                        })}>{value}</animated.span>)}
                     </animated.h1>
                     <p className={"hero--container--heading--description"}>
                         Etiam Christus auxilio fuit ad crucem suam portandam
                     </p>
                 </div>
-                <animated.a className={"hero--container--link"} href={''}
-                            onMouseEnter={() => {if (!flag) setFlag(true)}}
-                            onMouseLeave={() => {if (flag) setFlag(false)}}
+                <animated.a className={"hero--container--link"} href={'/welcome'}
                             style={useSpring({
                                 from : {
                                     y : 100,
@@ -66,7 +62,9 @@ export default function IndexPage() {
                                 },
                                 delay : 700,
                                 config : config.slow
-                            })}>
+                            })}
+                            onMouseEnter={() => setFlag(true)}
+                >
                     {(text.split('')).map((value, index) => <animated.span style={useSpring({
                         from : {
                             y : 100,
@@ -76,7 +74,7 @@ export default function IndexPage() {
                             y : 0,
                             opacity : 1
                         },
-                        delay : 800 + (index * 50),
+                        delay : 1500 + (index * 50),
                         config : config.slow
                     })}>{value}</animated.span>)}
                 </animated.a>
@@ -106,9 +104,9 @@ export default function IndexPage() {
                         config : config.slow
                     })}/>
                     <div className="image-glitch__layers">
-                        <div className="image-glitch__layer"></div>
-                        <div className="image-glitch__layer"></div>
-                        <div className="image-glitch__layer"></div>
+                        <div className="image-glitch__layer"/>
+                        <div className="image-glitch__layer"/>
+                        <div className="image-glitch__layer"/>
                     </div>
                 </div>
             </div>

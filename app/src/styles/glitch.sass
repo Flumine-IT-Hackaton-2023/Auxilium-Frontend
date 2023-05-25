@@ -4,13 +4,13 @@
 
 @keyframes glitch
   0%, 100%
-    text-shadow: -5.5px -2.5px 0 #1f640a, 2.5px 2.5px 0 #f00
+    text-shadow: -5.5px -2.5px 0 #1f640a, 2.5px 2.5px 0 rgba(255, 255, 255, 0.5)
   25%
-    text-shadow: 2.5px 5.5px 0 #1f640a, -2.5px -5.5px 0 #f00
+    text-shadow: 2.5px 5.5px 0 #1f640a, -2.5px -5.5px 0 rgba(255, 255, 255, 0.5)
   50%
-    text-shadow: 5.5px -2.5px 0 #1f640a, -2.5px 2.5px 0 #f00
+    text-shadow: 5.5px -2.5px 0 #1f640a, -2.5px 2.5px 0 rgba(255, 255, 255, 0.5)
   75%
-    text-shadow: 2.5px 2.5px 0 #1f640a, 5.5px -2.5px 0 #f00
+    text-shadow: 2.5px 2.5px 0 #1f640a, 5.5px -2.5px 0 rgba(255, 255, 255, 0.5)
 
 .image-glitch
   position: absolute
@@ -40,12 +40,15 @@
   &__layer:nth-child(1)
     transform: translateX(-5%)
     animation: glitch-anim-1 2s infinite linear alternate
+    animation-delay: 3s
   &__layer:nth-child(2)
     transform: translateX(3%) translateY(3%)
     animation: glitch-anim-2 2.3s -.8s infinite linear alternate
+    animation-delay: 3s
   &__layer:nth-child(3)
     transform: translateX(5%)
     animation: glitch-anim-flash 1s infinite linear
+    animation-delay: 3s
 
 @keyframes glitch-anim-1
   0%
