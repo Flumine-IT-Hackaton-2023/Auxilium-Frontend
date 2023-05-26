@@ -1,13 +1,36 @@
-
 version: '3'
 services:
   nginx:
     image: nginx
     ports:
       - "80:80"
-      - "8080:8080"
     restart: on-failure
+    depends_on:
+      - back
     volumes:
       - ./app/dist:/var/www/html
       - ./volumes/nginx/conf.d/:/etc/nginx/conf.d
       - ./volumes/nginx/logs/nginx:/var/log/nginx
+  back:
+    image: yhd97/foco_data
+    container_name: data
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - db
+    restart: on-failure
+    ports:
+      - "8080:8080"
+  db:
+    image: 'postgres:14-alpine'
+    container_name: auth_db
+    user: root
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    volumes:
+      - ./volumes/db/auth:/var/lib/postgresql/data
+    restart: on-failure
