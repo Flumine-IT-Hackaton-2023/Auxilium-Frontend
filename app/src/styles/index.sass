@@ -160,6 +160,9 @@
         transition: 300ms ease-in
         &:hover
           background-color: #CBA135
+          svg
+            path
+              fill: #0A0A0A
         &--img
           width: 32px
           height: 32px
@@ -168,7 +171,7 @@
   top: 0
   bottom: 0
   width: 200px
-  border-radius: 0 0 5px 0
+  border-radius: 5px 0 0 5px
   border-width: 0 1px 0 0
   border-style: solid
   border-color: #CBA135
@@ -190,6 +193,7 @@
           justify-content: center
           align-items: center
           background-color: rgba(255, 255, 255, .9)
+          transition: 300ms ease-in
           p
             font-size: 24px
             text-transform: uppercase
