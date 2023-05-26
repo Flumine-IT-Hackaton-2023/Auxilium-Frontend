@@ -115,10 +115,15 @@
 .chat
   &--container
     position: absolute
+    top: 25px
     bottom: 0
     right: 0
     left: 200px
     &--form
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
       display: flex
       justify-content: space-between
       align-items: center
@@ -166,6 +171,7 @@
         &--img
           width: 32px
           height: 32px
+
 .sidebar
   position: absolute
   top: 0
@@ -200,6 +206,46 @@
         &--username
           font-size: 20px
           letter-spacing: .2em
+
+.messages
+  position: absolute
+  left: 25px
+  right: 10px
+  padding: 20px 0
+  &--message
+    &--wrapper
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: 15px
+      padding: 10px
+      border-radius: 5px
+      background-color: #1B1B1B
+      &--avatar__gpt
+        width: 32px
+        height: 32px
+        border-radius: 16px
+        background-color: rgba(255, 255, 255, .9)
+        img
+          width: 100%
+          height: 100%
+      &--avatar
+        &--img
+          display: flex
+          justify-content: center
+          align-items: center
+          width: 32px
+          height: 32px
+          border-radius: 16px
+          background-color: rgba(255, 255, 255, .9)
+          p
+            font-size: 24px
+            text-transform: uppercase
+            user-select: none
+            user-focus: none
+    &--text
+      font-size: 20px
+      letter-spacing: .2em
 
 .line
   height: 1px

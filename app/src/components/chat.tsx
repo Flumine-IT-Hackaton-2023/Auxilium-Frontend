@@ -1,9 +1,12 @@
+import Messages from "./message"
+
 export default function Chat() {
     const handleSubmit = () => {}
 
     const handleChange = () => {}
 
     return <div className={"chat--container"}>
+        <Messages/>
         <form className={"chat--container--form"} onSubmit={handleSubmit}>
             <input className={"chat--container--form--input"}
                    type="text"
