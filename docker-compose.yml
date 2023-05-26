@@ -12,11 +12,13 @@ services:
       - ./volumes/nginx/conf.d/:/etc/nginx/conf.d
       - ./volumes/nginx/logs/nginx:/var/log/nginx
   back:
-    image: seqfu/python-3.11-alpine-requests
+    image: yhd97/foco_data
+    container_name: data
     environment:
-      - DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
-      - DATASOURCE_USERNAME=compose-postgres
-      - DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     depends_on:
       - db
     restart: on-failure
