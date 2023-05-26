@@ -7,7 +7,7 @@
 .hero
   padding-top: 100px
   @media screen and (width > 1440px)
-    padding-top: 350px
+    padding-top: 200px
   &--container
     @include container
     &--heading
@@ -28,9 +28,6 @@
         font-family: SchoonheidItalic, 'sans-serif'
         line-height: 60px
         width: 80%
-        @media screen and (width > 1440px)
-          font-size: 64px
-          width: 100%
     &--link,
     &--link__glitch
       font-size: 45px
@@ -101,56 +98,110 @@
 .app
   &--container
     @include container
+    position: relative
     max-width: 1400px
+    margin-top: 50px
+    width: 100%
+    height: 90vh
+    background-color: rgba(27, 27, 27, 0.5)
+    border-radius: 5px
+    border: 1px solid #CBA135
+    overflow: hidden
     @media screen and (width > 1440px)
       max-width: 1440px
     @media screen and (width > 1880px)
       max-width: 1640px
-    &--content
-      position: relative
-      margin-top: 50px
-      width: 100%
-      height: 90vh
-      background-color: rgba(27, 27, 27, 0.5)
-      border-radius: 5px
-      border: 1px solid #CBA135
-      overflow: hidden
-      &--form
-        position: absolute
-        bottom: 0
-        right: 0
-        left: 200px
+
+.chat
+  &--container
+    position: absolute
+    bottom: 0
+    right: 0
+    left: 200px
+    &--form
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: 30px
+      padding: 10px
+      background-color: #1B1B1B
+      border-radius: 0 0 5px 0
+      border-width: 1px 0 0 0
+      border-style: solid
+      border-color: #CBA135
+      &--input
+        width: 100%
+        font-size: 18px
+        font-family: CaslonBold, sans-serif
+        background-color: rgba(10, 10, 10, 0.2)
+        padding: 10px 0 10px 15px
+        color: #CBA135
+        border: none
+        border-width: 1px 1px 1px 0
+        border-radius: 0 0 5px 0
+        letter-spacing: .4em
+        &::placeholder
+          color: rgba(203, 161, 53, 0.7)
+          letter-spacing: .4em
+        &:focus
+          color: #CBA135
+      &--button
+        width: 50px
+        height: 50px
+        font-size: 18px
+        border: 1px solid #CBA135
+        border-radius: 5px
+        padding: 9px
+        font-family: CaslonBold, sans-serif
+        background-color: rgba(10, 10, 10, 0.2)
+        color: rgba(203, 161, 53, 0.7)
+        letter-spacing: .4em
+        cursor: pointer
+        transition: 300ms ease-in
+        &:hover
+          background-color: #CBA135
+        &--img
+          width: 32px
+          height: 32px
+.sidebar
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 200px
+  border-radius: 0 0 5px 0
+  border-width: 0 1px 0 0
+  border-style: solid
+  border-color: #CBA135
+  background-color: $background-color
+  z-index: 1
+  overflow: hidden
+  &--container
+    padding: 25px 10px
+    &--heading
+      &--user
         display: flex
         justify-content: space-between
         align-items: center
-        &--input
-          width: 100%
-          font-size: 18px
-          font-family: CaslonBold, sans-serif
-          background-color: #1B1B1B
-          padding: 20px 20px
-          color: #CBA135
-          border: none
-          letter-spacing: .4em
-          &::placeholder
-            color: rgba(203, 161, 53, 0.7)
-            letter-spacing: .4em
-          &:focus
-            color: #CBA135
-        &--button
-          font-size: 18px
-          border: none
-          border-radius: 5px
-          font-family: CaslonBold, sans-serif
-          background-color: #1B1B1B
-          padding: 20px 20px
-          color: rgba(203, 161, 53, 0.7)
-          letter-spacing: .4em
-          cursor: pointer
-          transition: 300ms ease-in
-          &:hover
-            background-color: #CBA135
-            color: #1B1B1B
+        &--image
+          width: 50px
+          height: 50px
+          border-radius: 25px
+          display: flex
+          justify-content: center
+          align-items: center
+          background-color: rgba(255, 255, 255, .9)
+          p
+            font-size: 24px
+            text-transform: uppercase
+        &--username
+          font-size: 20px
+          letter-spacing: .2em
+
+.line
+  height: 1px
+  margin-top: 25px
+  width: 100%
+  background-color: #CBA135
 
 .jesus
   position: absolute
