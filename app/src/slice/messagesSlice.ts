@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 enum messageTypes {
     user,
-    bot
+    bot,
+    system
 }
 
 export interface MessageModel {

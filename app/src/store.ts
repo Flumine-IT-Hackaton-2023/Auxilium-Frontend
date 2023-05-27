@@ -7,8 +7,8 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import { auxiliumBackendApiSlice } from './middleware';
-import { authSliceReducer, messagesSliceReducer, sessionSliceReducer, userSliceReducer } from './slice';
-import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import { messagesSliceReducer, sessionSliceReducer, userSliceReducer } from './slice';
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
@@ -16,7 +16,6 @@ const store = configureStore({
     user : userSliceReducer,
     sessions : sessionSliceReducer,
     messages : messagesSliceReducer,
-    auth : authSliceReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(auxiliumBackendApiSlice.middleware)
