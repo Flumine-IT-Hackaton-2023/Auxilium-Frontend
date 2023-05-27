@@ -46,9 +46,31 @@ export default function IndexPage() {
                             config : config.slow
                         })}>{value}</animated.span>)}
                     </animated.h1>
-                    <p className={"hero--container--heading--description"}>
-                        Etiam Christus auxilio fuit ad crucem suam portandam
-                    </p>
+                    <animated.p className={"hero--container--heading--description"} style={useSpring({
+                        from : {
+                            y : 100,
+                            opacity : 0
+                        },
+                        to : {
+                            y : 0,
+                            opacity : 1
+                        },
+                        delay : 1000,
+                        config : config.slow
+                    })}>
+                        { ("Etiam Christus auxilio fuit ad crucem suam portandam".split("")).map((value, index) => <animated.span style={useSpring({
+                            from : {
+                                y : 100,
+                                opacity : 0
+                            },
+                            to : {
+                                y : 0,
+                                opacity : 1
+                            },
+                            delay : 1000 + (index * 50),
+                            config : config.slow
+                        })}>{value}</animated.span>)}
+                    </animated.p>
                 </div>
                 <animated.a className={"hero--container--link"} href={'/welcome'}
                             style={useSpring({
@@ -60,7 +82,7 @@ export default function IndexPage() {
                                     y : 0,
                                     opacity : 1
                                 },
-                                delay : 700,
+                                delay : 4000,
                                 config : config.slow
                             })}
                             onMouseEnter={() => setFlag(true)}
@@ -74,7 +96,7 @@ export default function IndexPage() {
                             y : 0,
                             opacity : 1
                         },
-                        delay : 1500 + (index * 50),
+                        delay : 4000 + (index * 80),
                         config : config.slow
                     })}>{value}</animated.span>)}
                 </animated.a>

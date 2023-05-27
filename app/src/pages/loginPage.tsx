@@ -6,6 +6,8 @@ import { useAppDispatch } from "../store";
 import { set_auth, set_username } from "../slice/userSlice";
 
 import pattern from "../assets/pattern.webp";
+import adam from "../assets/adam.webp";
+import god from "../assets/god.webp";
 
 export default function LoginPage() {
     const navigator = useNavigate()
@@ -138,6 +140,9 @@ export default function LoginPage() {
                                 })}>Sign Up</animated.a>
                 </form>
             </div>
+            {/*<div className={"touch"}>
+                <img className={"touch--adam"} src={adam} alt=""/>
+            </div>*/}
         </section>
     </main>
 }

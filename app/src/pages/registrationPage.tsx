@@ -7,14 +7,25 @@ import { useState } from "react";
 import { useAppDispatch } from "../store";
 
 import pattern from "../assets/pattern.webp";
+import adam from "../assets/adam.webp";
+import god from "../assets/god.webp";
 
 export default function RegistrationPage() {
     const navigator = useNavigate()
     const dispatch = useAppDispatch()
 
     const [username, setUsername] = useState<string | null>()
-    const [password, setPassword] = useState<string | null>()
     const [email, setEmail] = useState<string | null>()
+    const [password, setPassword] = useState<string | null>()
+    const [confirmPassword, setConfirmPassword] = useState<string | null>()
+
+    const confirmPasswordValidation = (confirmPassword : any) => {
+        return confirmPassword === password
+    }
+
+    const emailValidation = (email : any) => {
+        return /\S+@\S+\.\S+/.test(email);
+    }
 
     return <main>
         <div className={"lines"}>
@@ -77,7 +88,15 @@ export default function RegistrationPage() {
                                         delay : 1100,
                                         config : config.slow
                                     })}
-                                    onChange={(event) => {setEmail(event.target.value)}}
+                                    onChange={(event) => {
+                                        if (!emailValidation(event.target.value)) {
+                                            event.target.style.boxShadow = "0 0 15px rgba(128, 0, 0, .5)"
+                                        }
+                                        else {
+                                            setEmail(event.target.value)
+                                            event.target.style.boxShadow = "0 0 15px rgba(0, 100, 0, .5)"
+                                        }
+                                    }}
                     />
                     <animated.input type="password" className={'sign-up--container--form--input'} placeholder={'password'}
                                     style={useSpring({
@@ -102,7 +121,17 @@ export default function RegistrationPage() {
                                         },
                                         delay : 1300,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {
+                                        if (!confirmPasswordValidation(event.target.value)) {
+                                            event.target.style.boxShadow = "0 0 15px rgba(128, 0, 0, .5)"
+                                        }
+                                        else {
+                                            setConfirmPassword(event.target.value)
+                                            event.target.style.boxShadow = "0 0 15px rgba(0, 100, 0, .5)"
+                                        }
+                                    }}
+                    />
                     <animated.button type="button" className={'sign-up--container--form--button'}
                                      style={useSpring({
                                          from : {
@@ -152,6 +181,9 @@ export default function RegistrationPage() {
                     </div>
                 </form>
             </div>
+            {/*<div className={"touch"}>
+                <img className={"touch--adam"} src={adam} alt=""/>
+            </div>*/}
         </section>
     </main>
 }

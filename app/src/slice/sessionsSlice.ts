@@ -48,6 +48,11 @@ const initialState : SessionsModel = {
                         messageText : "Гондон",
                         messageTime : "26.05.2023, 16:18:40",
                         messageType : messageTypes.user
+                    },
+                    {
+                        messageText : "Пользователь вышел из сети",
+                        messageTime : "26.05.2023, 16:18:40",
+                        messageType : messageTypes.system
                     }
                 ]
             }

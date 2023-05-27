@@ -7,16 +7,16 @@ import { RootState, useAppSelector } from "../store";
 export default function Sidebar(props : any) {
     const navigator = useNavigate()
 
-    const [username, setUsername] = useState<string | null>("iamvirgoo")
+    const USER = useAppSelector((state : RootState) => state.user)
 
     return <div className={"sidebar"}>
         <div className={"sidebar--container"}>
             <div className={"sidebar--container--heading"}>
                 <div className={"sidebar--container--heading--user"}>
                     <div className={"sidebar--container--heading--user--image"} >
-                        <p>{username?.at(0)}</p>
+                        <p>{USER.username?.at(0)}</p>
                     </div>
-                    <p className={"sidebar--container--heading--user--username"}>{username}</p>
+                    <p className={"sidebar--container--heading--user--username"}>{USER.username}</p>
                 </div>
                 <div className={"line"}/>
             </div>

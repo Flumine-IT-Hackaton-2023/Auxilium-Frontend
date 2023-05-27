@@ -100,6 +100,7 @@
           letter-spacing: .4em
           text-align: center
 
+
 .app
   &--container
     @include container
@@ -194,8 +195,9 @@
     &--heading
       &--user
         display: flex
-        justify-content: space-between
+        justify-content: flex-start
         align-items: center
+        gap: 10px
         margin-bottom: 25px
         &--image
           width: 50px
@@ -379,6 +381,12 @@
   height: 1px
   width: 100%
   background-color: #CBA135
+
+.touch
+  position: absolute
+  top: 0
+  &--adam
+    top: 350px
 
 .jesus
   position: absolute
