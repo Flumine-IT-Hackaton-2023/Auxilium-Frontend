@@ -1,8 +1,9 @@
 import pattern from "../assets/pattern.webp";
 import {animated, config, useSpring} from "react-spring";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function LoginPage() {
+    const navigator = useNavigate()
     return <main>
         <div className={"lines"}>
             {Array.from(
@@ -26,7 +27,7 @@ export default function LoginPage() {
                     delay : 800,
                     config : config.slow
                 })}>
-                    {(("Auxilium·Welcome").split("")).map((value, index) => <animated.span style={useSpring({
+                    {(("Auxilium·SignIn").split("")).map((value, index) => <animated.span style={useSpring({
                         from : {
                             y : 100,
                             opacity : 0
@@ -63,6 +64,7 @@ export default function LoginPage() {
                                         config : config.slow
                                     })}/>
                     <animated.button type="button" className={'sign-in--container--form--button'}
+                                     onClick={() => {navigator('/app')}}
                                      style={useSpring({
                                          from : {
                                              opacity : 0
@@ -74,17 +76,6 @@ export default function LoginPage() {
                                          config : config.slow
                                      })}>Submit</animated.button>
                     <div className={'sign-in--container--form--text-wrapper'}>
-                        <animated.a href={''} className={'sign-in--container--form--text-wrapper--text'}
-                                    style={useSpring({
-                                        from : {
-                                            opacity : 0
-                                        },
-                                        to : {
-                                            opacity : 1
-                                        },
-                                        delay : 1300,
-                                        config : config.slow
-                                    })}>Continue without registration</animated.a>
                         <animated.p className={'sign-in--container--form--text-wrapper--sep'}
                                     style={useSpring({
                                         from : {
@@ -93,7 +84,7 @@ export default function LoginPage() {
                                         to : {
                                             opacity : 1
                                         },
-                                        delay : 1400,
+                                        delay : 1300,
                                         config : config.slow
                                     })}>or</animated.p>
                     </div>
@@ -105,7 +96,7 @@ export default function LoginPage() {
                                     to : {
                                         opacity : 1
                                     },
-                                    delay : 1500,
+                                    delay : 1400,
                                     config : config.slow
                                 })}>Sign Up</animated.a>
                 </form>

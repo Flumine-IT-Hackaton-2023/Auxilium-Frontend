@@ -1,0 +1,74 @@
+.dropdown
+  &--info
+    display: flex
+    align-items: center
+    gap: 10px
+    background-color: rgba(10, 10, 10, 0.2)
+    padding: 10px 0 10px 15px
+    border: 1px solid #CBA135
+    border-radius: 5px
+    &__placeholder
+      font-size: 20px
+      letter-spacing: .2em
+      color: rgba(203, 161, 53, 0.7)
+    &__value
+      font-size: 20px
+      background-color: #0A0A0A
+      padding: 5px
+      border-radius: 5px
+      cursor: pointer
+      color: rgba(203, 161, 53, 0.7)
+      letter-spacing: 0.2em
+      transition: 200ms ease-in
+    &--wrapper
+      position: absolute
+      left: 0
+      width: 100%
+      height: 25px
+      visibility: hidden
+      opacity: 0
+    &--content
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      position: absolute
+      left: 20px
+      margin-top: 10px
+      padding: 10px 20px
+      min-width: 50%
+      height: 200px
+      gap: 15px
+      background-color: rgba(10, 10, 10, .9)
+      box-shadow: white
+      visibility: hidden
+      opacity: 0
+      transition: 200ms ease-in
+      border-radius: 0 0 5px 5px
+      overflow: auto
+      &--value
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        gap: 10px
+        cursor: pointer
+        border: 1px solid #CBA135
+        width: 90%
+        border-radius: 5px
+        padding: 10px
+        &__image
+          width: 32px
+          height: 32px
+          background-color: rgba(255, 255, 255, .9)
+          border-radius: 16px
+        &__text
+          font-size: 20px
+          letter-spacing: .2em
+  &:hover
+    color: #3151F9
+    transition: 200ms ease-in
+    .dropdown--info--wrapper
+      visibility: visible
+    .dropdown--info--content
+      visibility: visible
+      opacity: 1
+      transition: 200ms ease-in

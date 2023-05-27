@@ -76,6 +76,10 @@
         color: rgba(203, 161, 53, 1)
         text-align: center
         cursor: pointer
+        &:hover
+          transition: 300ms ease-in
+          background-color: #CBA135
+          color: #0A0A0A
       &--text-wrapper
         display: flex
         flex-direction: column
@@ -191,6 +195,7 @@
         display: flex
         justify-content: space-between
         align-items: center
+        margin-bottom: 25px
         &--image
           width: 50px
           height: 50px
@@ -206,6 +211,30 @@
         &--username
           font-size: 20px
           letter-spacing: .2em
+    &--chats
+      margin-top: 25px
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      gap: 10px
+
+.sidebar-button
+  &--add
+    width: 180px
+    padding: 10px 0
+    cursor: pointer
+    background-color: rgba(10, 10, 10, 0.2)
+    border-radius: 5px
+    border: 1px solid rgba(203, 161, 53, 0.7)
+    transition: 300ms ease-in
+    p
+      font-size: 20px
+      letter-spacing: .2em
+      font-family: CaslonBold, sans-serif
+    &:hover
+      background-color: #CBA135
+      p
+        color: #0A0A0A
 
 .messages
   position: absolute
@@ -247,9 +276,66 @@
       font-size: 20px
       letter-spacing: .2em
 
+.modal
+  height: 50vh
+  gap: 30px
+  &--overlay
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    backdrop-filter: blur(3px)
+  &--heading
+    &--title
+      font-size: 32px
+      letter-spacing: .4em
+      padding-bottom: 10px
+  &--content
+    display: flex
+    flex-direction: column
+    gap: 10px
+    padding-top: 20px
+    &--input
+      width: 450px
+      font-size: 18px
+      font-family: CaslonBold, sans-serif
+      background-color: rgba(10, 10, 10, 0.2)
+      padding: 10px 0 10px 15px
+      color: #CBA135
+      border: 1px solid #CBA135
+      border-radius: 5px
+      letter-spacing: .2em
+      &::placeholder
+        color: rgba(203, 161, 53, 0.7)
+    &--create-btn
+      cursor: pointer
+      margin-top: 100px
+      background-color: rgba(10, 10, 10, 0.2)
+      border: 1px solid #CBA135
+      border-radius: 5px
+      padding: 10px
+      font-size: 20px
+      font-family: CaslonBold, sans-serif
+      letter-spacing: .2em
+      color: rgba(203, 161, 53, 0.7)
+      transition: 300ms ease-in
+      &:hover
+        background-color: #CBA135
+        color: #0A0A0A
+
+.loader
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-left: .4em
+  transform: translate(-50%, -50%) !important
+  font-size: 146px
+  letter-spacing: .4em
+  font-family: SchoonheidContextual, sans-serif
+
 .line
   height: 1px
-  margin-top: 25px
   width: 100%
   background-color: #CBA135
 

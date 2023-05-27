@@ -25,3 +25,6 @@ export const messages = [
         type : "user"
     }
 ]
+
+export const confirm_roles = ["debil"]
+export const all_roles = ["eblan", "gondon", "uebak"]

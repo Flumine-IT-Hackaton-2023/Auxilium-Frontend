@@ -1,19 +1,46 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
 
 import Chat from "../../components/chat";
 import Sidebar from "../../components/sidebar";
 
 import pattern from "../../assets/pattern.webp";
+import {animated, config, useSpring} from "react-spring";
 
 export default function AppIndex() {
-    const [message, setMessage] = useState("");
-    const [color, setColor] = useState("");
+    const [flag, setFlag] = useState(true)
 
-    const handleSubmit = () => {}
-
-    const handleChange = () => {}
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setFlag(!flag)
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [])
 
     return <main>
+        <div style={{display: flag ? "auto" : "none", transition: "300 ease-in"}}><animated.h1 className={"loader"} style={useSpring({
+            from : {
+                y : 100,
+                opacity : 0
+            },
+            to : {
+                y : 0,
+                opacity : 1
+            },
+            delay : 800,
+        })}>
+            { ("Welcome".split('')).map((value, index) => <animated.span style={useSpring({
+                from : {
+                    y : 100,
+                    opacity : 0
+                },
+                to : {
+                    y : 0,
+                    opacity : 1
+                },
+                delay : 800 + (index * 70),
+                config : config.slow
+            })}>{value}</animated.span>)}
+        </animated.h1></div>
         <div className={"lines"}>
             {Array.from(
                 {length: window.innerWidth / 100},
@@ -23,10 +50,18 @@ export default function AppIndex() {
         </div>
         <section className={"app"}>
             <img className={"pattern"} src={pattern} alt=""/>
-            <div className={"app--container"}>
+            <animated.div className={"app--container"} style={useSpring({
+                from : {
+                    opacity : 0
+                },
+                to : {
+                    opacity : 1
+                },
+                delay : 3000
+            })}>
                 <Sidebar/>
-                <Chat/>
-            </div>
+                {/*<Chat/>*/}
+            </animated.div>
         </section>
     </main>
 }

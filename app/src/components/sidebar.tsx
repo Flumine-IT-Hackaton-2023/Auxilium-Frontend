@@ -1,4 +1,5 @@
 import {useState} from "react";
+import SidebarButton from "./sidebarButton";
 
 export default function Sidebar() {
     const [username, setUsername] = useState<string | null>("iamvirgoo")
@@ -15,7 +16,7 @@ export default function Sidebar() {
                 <div className={"line"}/>
             </div>
             <div className={"sidebar--container--chats"}>
-
+                <SidebarButton type={"add"}/>
             </div>
         </div>
     </div>
