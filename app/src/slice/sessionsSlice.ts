@@ -1,15 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MessagesModel, messageTypes } from "./messagesSlice";
-import { RootState, useAppSelector } from "../store";
-import { Messages } from "./index";
+import {MessageModel, MessagesModel, messageTypes} from "./messagesSlice";
 
 export interface SessionModel {
     id: number,
     name: string,
-    role: string,
-    modelName: string,
+    role?: string,
+    modelName?: string,
     open: boolean
-    messages: Messages
+    messages: MessagesModel
 }
 
 export interface SessionsModel {
@@ -25,7 +23,7 @@ const initialState : SessionsModel = {
             modelName : "GPT-3.5",
             open : true,
             messages : {
-                values : [
+                values: [
                     {
                         messageText : "Ты будешь работать?",
                         messageTime : "26.05.2023, 16:16:30",
@@ -59,7 +57,7 @@ const initialState : SessionsModel = {
             name : "Chat #2",
             role : "debil",
             modelName : "GPT-3.5 turbo",
-            open : true,
+            open : false,
             messages : {
                 values : [
                     {
@@ -95,14 +93,15 @@ export const sessionSlice = createSlice({
         add_sessions: (state, action : PayloadAction<SessionModel>) => {
             state.values.push(action.payload)
         },
-        open_session: (state, action : PayloadAction<SessionsModel>) => {
-            state.values
-        }
+        add_message: (state, action : PayloadAction<MessageModel>) => {
+            state.values[0].messages.values.push(action.payload)
+        },
     }
 })
 
 export const {
-    add_sessions
+    add_sessions,
+    add_message
 } = sessionSlice.actions
 
 export default sessionSlice.reducer

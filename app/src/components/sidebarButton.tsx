@@ -1,14 +1,27 @@
 import { useState } from "react";
 
 import Modal from "react-modal"
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import Dropdown from "./dropdown";
+import { RootState, useAppDispatch, useAppSelector } from "../store";
+import { add_sessions } from "../slice/sessionsSlice";
+import gpt from "../assets/gpt.svg";
 
 export default function SidebarButton(props : any) {
     const navigator = useNavigate()
 
+    const dispatch = useAppDispatch()
+    const SESSIONS = useAppSelector((state : RootState) => state.sessions.values)
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [chatName, setChatName] = useState<string>("")
+
+    const [confirm_role, setConfirm_role] = useState<string>()
+    const all_roles = ["sudo", "dan", "politic", "priest"]
+
+    const [confirmBot, setConfirmBot] = useState<string>()
+    const bots = ["GPT-3.5 turbo", "GPT-3.5", "GPT-3"]
+
 
     const customStyles = {
         content: {
@@ -63,10 +76,64 @@ export default function SidebarButton(props : any) {
                     <div className={"line"}/>
                 </div>
                 <div className={"modal--content"}>
-                    <input type="text" className={"modal--content--input"} placeholder={"Сome up with a chat name"}/>
-                    <Dropdown type={"roles"}/>
-                    <Dropdown type={""}/>
-                    <button className={"modal--content--create-btn"}>Create</button>
+                    <input type="text" className={"modal--content--input"} placeholder={"Сome up with a chat name"}
+                           onChange={(event) => {setChatName(event.target.value)}}/>
+                    <div className={"dropdown"}>
+                        <div className={"dropdown--info"}>
+                            {confirm_role == null
+                                ? <p className={"dropdown--info__placeholder"}>Roles...</p>
+                                : <p className={"dropdown--info__value"} onClick={() => {
+                                    // @ts-ignore
+                                    setConfirm_role(null)}}>{confirm_role}</p>
+                            }
+                        </div>
+                        <div className={"dropdown--info--wrapper"}/>
+                        <div className={"dropdown--info--content"}>
+                            {all_roles.map((value) =>
+                                <div className={"dropdown--info--content--value"} onClick={() => {
+                                    setConfirm_role(value)
+                                }}>
+                                    <p className={"dropdown--info--content--value__text"}>{value}</p>
+                                </div>)}
+                        </div>
+                    </div>
+                    <div className={"dropdown"}>
+                        <div className={"dropdown--info"}>
+                            {confirmBot == null
+                                ? <p className={"dropdown--info__placeholder"}>Choose a bot...</p>
+                                : <p className={"dropdown--info__value"} onClick={() => {
+                                    // @ts-ignore
+                                    setConfirmBot(null)}}>{confirmBot}</p>
+                            }
+                        </div>
+                        <div className={"dropdown--info--wrapper"}/>
+                        <div className={"dropdown--info--content"}>
+                            {bots.map((value) =>
+                                <div className={"dropdown--info--content--value"} onClick={() => {
+                                    setConfirmBot(value)
+                                }}>
+                                    <img className={"dropdown--info--content--value__image"} src={gpt} alt=""/>
+                                    <p className={"dropdown--info--content--value__text"}>{value}</p>
+                                </div>)}
+                        </div>
+                    </div>
+                    <button className={"modal--content--create-btn"} onClick={() => {
+                        // @ts-ignore
+                        dispatch(add_sessions({
+                            id : SESSIONS.length,
+                            name : chatName,
+                            role : confirm_role,
+                            modelName : confirmBot,
+                            messages : { values : [] }
+                        }))
+                        console.log({
+                            id : SESSIONS.length,
+                            name : chatName,
+                            role : confirm_role,
+                            modelName : confirmBot,
+                            messages : { values : [] }
+                        })
+                    }}>Create</button>
                 </div>
             </div>
         </Modal>

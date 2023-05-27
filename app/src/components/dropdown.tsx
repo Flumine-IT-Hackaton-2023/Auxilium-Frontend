@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 import gpt from "../assets/gpt.svg"
+import {useAppDispatch} from "../store";
 
 export default function Dropdown(props : any) {
     const [confirm_role, setConfirm_role] = useState<string | null>()
-    const all_roles = ["eblan", "gondon", "uebak", "huilo", "eblan", "gondon", "uebak", "huilo"]
+    const all_roles = ["sudo", "dan", "politic", "priest"]
 
     const [confirmBot, setConfirmBot] = useState<string | null>()
     const bots =["GPT-3.5 turbo", "GPT-3.5", "GPT-3"]

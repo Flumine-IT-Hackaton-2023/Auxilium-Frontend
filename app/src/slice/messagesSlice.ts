@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 export enum messageTypes {
     user,
@@ -7,7 +8,7 @@ export enum messageTypes {
 }
 
 export interface MessageModel {
-    messageText : string,
+    messageText? : string,
     messageTime : string,
     messageType : messageTypes
 }
@@ -60,4 +61,5 @@ export const {
     append_messages
 } = messagesSlice.actions
 
+export const messagesData = ((state : RootState) => state.messages.values)
 export default messagesSlice.reducer
