@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SidebarButton from "./sidebarButton";
+import { RootState, useAppSelector } from "../store";
 
-export default function Sidebar() {
+export default function Sidebar(props : any) {
     const navigator = useNavigate()
 
     const [username, setUsername] = useState<string | null>("iamvirgoo")
@@ -21,6 +22,10 @@ export default function Sidebar() {
             </div>
             <div className={"sidebar--container--chats"}>
                 <SidebarButton type={"add"}/>
+                <div className={"line"} style={{margin: "15px 0"}}/>
+                {props.SESSIONS.map((value : any) =>
+                    <SidebarButton type={"chat"} chatName={value.name} id={value.id}/>
+                )}
             </div>
             <div className={"sidebar--container--lower"} onClick={() => {navigator('/')}}>
                 <div className={"sidebar--container--lower--exit"}>

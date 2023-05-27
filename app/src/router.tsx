@@ -26,6 +26,10 @@ export const Router = createBrowserRouter([
             {
                 index : true,
                 element : <AppIndex/>
+            },
+            {
+                path : ':id',
+                element : <AppIndex/>
             }
         ]
     }

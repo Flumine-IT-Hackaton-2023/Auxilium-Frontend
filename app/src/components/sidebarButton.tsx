@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 import Modal from "react-modal"
+import {Link, useNavigate} from "react-router-dom";
 
 import Dropdown from "./dropdown";
 
 export default function SidebarButton(props : any) {
+    const navigator = useNavigate()
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const customStyles = {
@@ -35,7 +38,15 @@ export default function SidebarButton(props : any) {
                     Add new
                 </p>
             </button>
-            : <div></div>
+            : <button className={"sidebar-button--chat"} onClick={() => {
+                navigator("" + props.id);
+                // @ts-ignore
+                window.location.reload(1)
+            }}>
+                <p className={"sidebar-button--add--cnt"}>
+                    {props.chatName}
+                </p>
+            </button>
         }
         <Modal
             isOpen={modalIsOpen}

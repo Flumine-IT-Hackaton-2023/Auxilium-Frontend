@@ -18,7 +18,6 @@ export interface authRequest {
 
 export interface registerRequest {
   login : string;
-  password : string;
   email : string
 }
 

@@ -5,42 +5,14 @@ import Chat from "../../components/chat";
 import Sidebar from "../../components/sidebar";
 
 import pattern from "../../assets/pattern.webp";
+import {RootState, useAppSelector} from "../../store";
 
 export default function AppIndex() {
-    const [flag, setFlag] = useState(true)
+    const [chatNumber, setChatNumber] = useState<number>(0)
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setFlag(!flag)
-        }, 3000);
-        return () => clearTimeout(timer);
-    }, [])
+    const SESSIONS = useAppSelector((state : RootState) => state.sessions.values)
 
     return <main>
-        <div style={{display: flag ? "auto" : "none", transition: "300 ease-in"}}><animated.h1 className={"loader"} style={useSpring({
-            from : {
-                y : 100,
-                opacity : 0
-            },
-            to : {
-                y : 0,
-                opacity : 1
-            },
-            delay : 800,
-        })}>
-            { ("Welcome".split('')).map((value, index) => <animated.span style={useSpring({
-                from : {
-                    y : 100,
-                    opacity : 0
-                },
-                to : {
-                    y : 0,
-                    opacity : 1
-                },
-                delay : 800 + (index * 70),
-                config : config.slow
-            })}>{value}</animated.span>)}
-        </animated.h1></div>
         <div className={"lines"}>
             {Array.from(
                 {length: window.innerWidth / 100},
@@ -48,7 +20,7 @@ export default function AppIndex() {
                 .map(() => <div className={"lines--line"} style={{height: window.innerHeight}}/>)
             }
         </div>
-        <section className={"app"}>
+        {/*<section className={"app"}>
             <img className={"pattern"} src={pattern} alt=""/>
             <animated.div className={"app--container"} style={useSpring({
                 from : {
@@ -59,9 +31,9 @@ export default function AppIndex() {
                 },
                 delay : 3000
             })}>
-                <Sidebar/>
-                {/*<Chat/>*/}
+                <Sidebar SESSIONS={SESSIONS}/>
+                <Chat chatId={chatNumber}/>
             </animated.div>
-        </section>
+        </section>*/}
     </main>
 }

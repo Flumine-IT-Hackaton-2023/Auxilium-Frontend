@@ -1,12 +1,15 @@
 import Messages from "./message"
+import {RootState, useAppSelector} from "../store";
 
-export default function Chat() {
+export default function Chat(props : any) {
+    const SESSIONS = useAppSelector((state : RootState) => state.sessions.values)
+
     const handleSubmit = () => {}
 
     const handleChange = () => {}
 
     return <div className={"chat--container"}>
-        <Messages/>
+        <Messages messages={SESSIONS[props.chatId].messages.values}/>
         <form className={"chat--container--form"} onSubmit={handleSubmit}>
             <input className={"chat--container--form--input"}
                    type="text"
