@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {RootState} from "../store";
 
 export interface UserModel {
   username: string,
@@ -7,7 +6,7 @@ export interface UserModel {
 }
 
 const initialState: UserModel = {
-  username : 'iamvirgoo',
+  username : 'admin',
   authenticate : false
 };
 

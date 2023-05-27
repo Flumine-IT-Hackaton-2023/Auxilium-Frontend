@@ -1,10 +1,19 @@
 import { animated, config, useSpring } from "react-spring";
 import { useNavigate } from "react-router-dom";
 
+import { useState } from "react";
+import { useAppDispatch } from "../store";
+import { set_auth, set_username } from "../slice/userSlice";
+
 import pattern from "../assets/pattern.webp";
 
 export default function LoginPage() {
     const navigator = useNavigate()
+    const dispatch = useAppDispatch()
+
+    const [username, setUsername] = useState<string | null>()
+    const [password, setPassword] = useState<string | null>()
+
     return <main>
         <div className={"lines"}>
             {Array.from(
@@ -52,7 +61,10 @@ export default function LoginPage() {
                                         },
                                         delay : 1000,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {
+                                        setUsername(event.target.value)
+                                    }}/>
                     <animated.input type="password" className={'sign-in--container--form--input'} placeholder={'password'}
                                     style={useSpring({
                                         from : {
@@ -63,9 +75,11 @@ export default function LoginPage() {
                                         },
                                         delay : 1100,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {
+                                        setPassword(event.target.value)
+                                    }}/>
                     <animated.button type="button" className={'sign-in--container--form--button'}
-                                     onClick={() => {navigator('/app')}}
                                      style={useSpring({
                                          from : {
                                              opacity : 0
@@ -75,7 +89,29 @@ export default function LoginPage() {
                                          },
                                          delay : 1200,
                                          config : config.slow
-                                     })}>Submit</animated.button>
+                                     })}
+                                     onClick={async () => {
+                                         const result = await fetch("http://localhost:80/api/authenticate", {
+                                             headers: {
+                                                 "Content-Type": "application/json"
+                                             },
+                                             body: JSON.stringify({
+                                                 "login": username,
+                                                 "password": password,
+                                             }),
+                                             method: "POST",
+                                             redirect: "follow"
+                                         });
+                                         if (result.ok) {
+                                             navigator('/app')
+                                             dispatch(set_username(String(username)))
+                                             dispatch(set_auth(true))
+                                         }
+                                         else {
+                                             console.log(result.statusText)
+                                         }
+                                     }}
+                    >Log In</animated.button>
                     <div className={'sign-in--container--form--text-wrapper'}>
                         <animated.p className={'sign-in--container--form--text-wrapper--sep'}
                                     style={useSpring({

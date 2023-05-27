@@ -10,13 +10,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const auxiliumBackendApiSlice = createApi({
   reducerPath: 'auxiliumBackendApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:9090/api/v1' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:8080/api'
+  }),
   endpoints: builder => ({
-    getBots: builder.query({
-      query: () => '/bots'
+    auth: builder.query({
+      query: () => '/authenticate'
     })
   })
 });
 
-export const { useGetBotsQuery } = auxiliumBackendApiSlice;
+export const { useAuthQuery } = auxiliumBackendApiSlice;
 

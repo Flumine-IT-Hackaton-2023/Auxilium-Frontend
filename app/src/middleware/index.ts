@@ -1,8 +1,8 @@
 // Re-exports
-import { auxiliumBackendApiSlice, useGetBotsQuery } from './auximBackend';
+import { auxiliumBackendApiSlice, useAuthQuery } from './auximBackend';
 
 export {
   auxiliumBackendApiSlice,
-  useGetBotsQuery,
+  useAuthQuery
 };
 

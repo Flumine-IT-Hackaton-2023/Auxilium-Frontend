@@ -1,8 +1,21 @@
-import {animated, config, useSpring} from "react-spring";
-import {Link} from "react-router-dom";
+import { animated, config, useSpring } from "react-spring";
+
+import { Link, useNavigate } from "react-router-dom";
+import { set_auth, set_username } from "../slice/userSlice";
+
+import { useState } from "react";
+import { useAppDispatch } from "../store";
+
 import pattern from "../assets/pattern.webp";
 
 export default function RegistrationPage() {
+    const navigator = useNavigate()
+    const dispatch = useAppDispatch()
+
+    const [username, setUsername] = useState<string | null>()
+    const [password, setPassword] = useState<string | null>()
+    const [email, setEmail] = useState<string | null>()
+
     return <main>
         <div className={"lines"}>
             {Array.from(
@@ -50,7 +63,9 @@ export default function RegistrationPage() {
                                         },
                                         delay : 1000,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {setUsername(event.target.value)}}
+                    />
                     <animated.input type="email" className={'sign-up--container--form--input'} placeholder={'email'}
                                     style={useSpring({
                                         from : {
@@ -61,7 +76,9 @@ export default function RegistrationPage() {
                                         },
                                         delay : 1100,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {setEmail(event.target.value)}}
+                    />
                     <animated.input type="password" className={'sign-up--container--form--input'} placeholder={'password'}
                                     style={useSpring({
                                         from : {
@@ -72,7 +89,9 @@ export default function RegistrationPage() {
                                         },
                                         delay : 1200,
                                         config : config.slow
-                                    })}/>
+                                    })}
+                                    onChange={(event) => {setPassword(event.target.value)}}
+                    />
                     <animated.input type="password" className={'sign-up--container--form--input'} placeholder={'confirm password'}
                                     style={useSpring({
                                         from : {
@@ -94,7 +113,30 @@ export default function RegistrationPage() {
                                          },
                                          delay : 1400,
                                          config : config.slow
-                                     })}>Submit</animated.button>
+                                     })}
+                                     onClick={ async () => {
+                                         const result = await fetch("http://localhost:80/api/register", {
+                                             headers: {
+                                                 "Content-Type": "application/json"
+                                             },
+                                             body: JSON.stringify({
+                                                 "username": username,
+                                                 "email": email,
+                                                 "password": password
+                                             }),
+                                             method: "POST",
+                                             redirect: "follow"
+                                         });
+                                         if (result.ok) {
+                                             navigator('/app')
+                                             dispatch(set_username(String(username)))
+                                             dispatch(set_auth(true))
+                                         }
+                                         else {
+                                             console.log(result.statusText)
+                                         }
+                                     }}
+                    >Submit</animated.button>
                     <div className={'sign-in--container--form--text-wrapper'}>
                         <animated.p className={'sign-in--container--form--text-wrapper--sep'}
                                     style={useSpring({
