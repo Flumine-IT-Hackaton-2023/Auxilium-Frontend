@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import {all_roles, confirm_roles} from "../devtools/info";
-
 import gpt from "../assets/gpt.svg"
 
 export default function Dropdown(props : any) {

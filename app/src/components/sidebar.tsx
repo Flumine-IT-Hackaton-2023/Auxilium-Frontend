@@ -1,7 +1,11 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import SidebarButton from "./sidebarButton";
 
 export default function Sidebar() {
+    const navigator = useNavigate()
+
     const [username, setUsername] = useState<string | null>("iamvirgoo")
 
     return <div className={"sidebar"}>
@@ -17,6 +21,11 @@ export default function Sidebar() {
             </div>
             <div className={"sidebar--container--chats"}>
                 <SidebarButton type={"add"}/>
+            </div>
+            <div className={"sidebar--container--lower"} onClick={() => {navigator('/')}}>
+                <div className={"sidebar--container--lower--exit"}>
+                    <p className={"sidebar--container--lower--exit__text"}>Exit</p>
+                </div>
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { animated, config, useSpring } from "react-spring";
 
 import Chat from "../../components/chat";
 import Sidebar from "../../components/sidebar";
 
 import pattern from "../../assets/pattern.webp";
-import {animated, config, useSpring} from "react-spring";
 
 export default function AppIndex() {
     const [flag, setFlag] = useState(true)

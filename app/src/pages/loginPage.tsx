@@ -1,6 +1,7 @@
+import { animated, config, useSpring } from "react-spring";
+import { useNavigate } from "react-router-dom";
+
 import pattern from "../assets/pattern.webp";
-import {animated, config, useSpring} from "react-spring";
-import {Link, useNavigate} from "react-router-dom";
 
 export default function LoginPage() {
     const navigator = useNavigate()
