@@ -4,7 +4,7 @@
 /// @author AssertionBit
 /// @license MIT
 
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BaseQueryApi, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Message, User } from "../slice";
 import { authRequest, registerRequest } from "../slice/userSlice";
 import { isMessage } from "./schemaValidator";
@@ -60,12 +60,16 @@ export const auxiliumBackendApi = createApi({
         body: JSON.stringify(auth)
       })
     }),
-    createChat: builder.query<void, void>({
-      query: ({...auth}) => {
+    createChat: builder.query<void, { modelType: string, role: string, name: string }>({
+      query: (arg) => ({
         url: "/createroom",
-
-      }
-    })
+        method: "POST",
+        headers : {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ model: arg.modelType, role: arg.role, name: arg.name })
+      }),
+    }),
     // sendMessage: builder.query<Message, number>({
     //  query: (chatId: number) => `/chat/${chatId}/sendMessage`,
     //  queryFn: (chatMessageContent: string) => {
@@ -135,5 +139,8 @@ export const auxiliumBackendApi = createApi({
   })
 });
 
-export const { useGetMessagesQuery } = auxiliumBackendApi;
+export const { 
+  useGetMessagesQuery,
+  useCreateChatQuery
+} = auxiliumBackendApi;
 

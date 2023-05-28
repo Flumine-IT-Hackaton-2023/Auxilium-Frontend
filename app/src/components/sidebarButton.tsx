@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { RootState, useAppDispatch, useAppSelector } from "../store";
 import { add_sessions } from "../slice/sessionsSlice";
 import gpt from "../assets/gpt.svg";
+import { useCreateChatQuery } from "../middleware/auximBackend";
+import { useSelector } from "react-redux";
 
 export default function SidebarButton(props : any) {
     const navigator = useNavigate()
@@ -20,7 +22,9 @@ export default function SidebarButton(props : any) {
     const all_roles = ["sudo", "dan", "politic", "priest"]
 
     const [confirmBot, setConfirmBot] = useState<string>()
-    const bots = ["GPT-3.5 turbo", "GPT-3.5", "GPT-3"]
+    const bots = ["GPT-3.5 turbo", "GPT-3.5", "GPT-3"];
+
+    const user_name = useSelector((state: RootState) => state.user.username);
 
 
     const customStyles = {
@@ -133,6 +137,10 @@ export default function SidebarButton(props : any) {
                             modelName : confirmBot,
                             messages : { values : [] }
                         })
+                        useCreateChatQuery({ 
+                            modelType: confirmBot as string, 
+                            role: confirm_role as string, 
+                            name: user_name });
                     }}>Create</button>
                 </div>
             </div>
