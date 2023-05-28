@@ -149,14 +149,6 @@ export default function RegistrationPage() {
                                             email: email as string, 
                                             login: username as string, 
                                             password: password as string});
-                                         if (result.ok) {
-                                             navigator('/app')
-                                             dispatch(set_username(String(username)))
-                                             dispatch(set_auth(true))
-                                         }
-                                         else {
-                                             console.log(result.statusText)
-                                         }
                                      }}
                     >Submit</animated.button>
                     <div className={'sign-in--container--form--text-wrapper'}>
