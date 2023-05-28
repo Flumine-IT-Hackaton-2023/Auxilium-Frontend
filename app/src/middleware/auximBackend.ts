@@ -49,7 +49,7 @@ export const auxiliumBackendApi = createApi({
         body: JSON.stringify(auth)
       })
     }),
-    registration: builder.query<User, Partial<registerRequest>>({
+    createUser: builder.query<User, Partial<registerRequest>>({
       query: ({...auth}) => ({
         url: "/register",
         headers : {
@@ -141,6 +141,7 @@ export const auxiliumBackendApi = createApi({
 
 export const { 
   useGetMessagesQuery,
-  useCreateChatQuery
+  useCreateChatQuery,
+  useCreateUserQuery
 } = auxiliumBackendApi;
 

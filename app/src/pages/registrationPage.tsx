@@ -9,6 +9,7 @@ import { useAppDispatch } from "../store";
 import pattern from "../assets/pattern.webp";
 import adam from "../assets/adam.webp";
 import god from "../assets/god.webp";
+import { useCreateUserQuery } from "../middleware/auximBackend";
 
 export default function RegistrationPage() {
     const navigator = useNavigate()
@@ -144,18 +145,10 @@ export default function RegistrationPage() {
                                          config : config.slow
                                      })}
                                      onClick={ async () => {
-                                         const result = await fetch("http://localhost:80/api/register", {
-                                             headers: {
-                                                 "Content-Type": "application/json"
-                                             },
-                                             body: JSON.stringify({
-                                                 "username": username,
-                                                 "email": email,
-                                                 "password": password
-                                             }),
-                                             method: "POST",
-                                             redirect: "follow"
-                                         });
+                                         const result = await useCreateUserQuery({ 
+                                            email: email as string, 
+                                            login: username as string, 
+                                            password: password as string});
                                          if (result.ok) {
                                              navigator('/app')
                                              dispatch(set_username(String(username)))

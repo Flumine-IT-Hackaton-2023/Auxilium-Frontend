@@ -17,7 +17,8 @@ export interface authRequest {
 
 export interface registerRequest {
   login : string;
-  email : string
+  email : string;
+  password: string;
 }
 
 export const userSlice = createSlice({
