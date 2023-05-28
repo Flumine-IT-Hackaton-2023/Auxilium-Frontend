@@ -63,7 +63,6 @@ export const auxiliumBackendApi = createApi({
     createChat: builder.query<void, void>({
       query: ({...auth}) => {
         url: "/createroom",
-
       }
     })
     // sendMessage: builder.query<Message, number>({
