@@ -181,9 +181,34 @@ export default function RegistrationPage() {
                     </div>
                 </form>
             </div>
-            {/*<div className={"touch"}>
-                <img className={"touch--adam"} src={adam} alt=""/>
-            </div>*/}
+            <div className={"touch"}>
+                <animated.img className={"touch--adam"} src={adam} alt=""
+                              style={useSpring({
+                                  from : {
+                                      x : -100,
+                                      opacity : 0
+                                  },
+                                  to : {
+                                      x : 0,
+                                      opacity : 1
+                                  },
+                                  delay : 400,
+                                  config : config.slow
+                              })}/>
+                <animated.img className={"touch--god"} src={god} alt=""
+                              style={useSpring({
+                                  from : {
+                                      x : 100,
+                                      opacity : 0
+                                  },
+                                  to : {
+                                      x : 0,
+                                      opacity : 1
+                                  },
+                                  delay : 400,
+                                  config : config.slow
+                              })}/>
+            </div>
         </section>
     </main>
 }

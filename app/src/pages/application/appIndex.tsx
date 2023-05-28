@@ -1,7 +1,3 @@
-import { useState } from "react";
-
-import {RootState, useAppSelector} from "../../store";
-
 export default function AppIndex() {
     return <main>
         <div className={"lines"}>
