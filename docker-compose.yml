@@ -24,7 +24,7 @@ services:
   auxilium:
     image: vadim2422/auxilium:latest
 
-    container_name: auth
+    container_name: auxilium
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db/db"
       SPRING_DATASOURCE_USERNAME: "admin"
@@ -36,3 +36,10 @@ services:
     restart: on-failure
     ports:
       - "8085:8080"
+  gpt:
+    image: assertionbit/auxilium-gpt:latest
+    container_name: gpt
+    links:
+      - auxilium
+    ports:
+      - "8090:8000"
