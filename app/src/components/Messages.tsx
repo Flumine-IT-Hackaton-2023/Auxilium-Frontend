@@ -1,16 +1,20 @@
-import { useState } from "react";
-
-import { messages } from "../devtools/info";
+import { useSelector } from "react-redux";
 
 import gpt from "../assets/gpt.svg"
-import {RootState, useAppSelector} from "../store";
-import {messageTypes} from "../slice/messagesSlice";
+import { Session } from "../slice";
+import { messageTypes } from "../slice/messagesSlice";
+import { RootState } from "../store";
 
-export default function Messages(props : any) {
-    const [username, setUsername] = useState<string | null>("iamvirgoo")
+export default function Messages(props : {
+  chatId: number
+}) {
+
+    const userName = useSelector((state: RootState) => state.user.username);
+    const messages = useSelector((state: RootState) => 
+      (state.sessions.values.at(props.chatId) as Session).messages.values);
 
     return <div className={"messages"}>
-        {props.messages?.map((value : any) =>
+        { messages.map((value : any) =>
             <>
                 {value.messageType == messageTypes.bot
                     ? <div className={"messages--message"} style={{display: "flex", justifyContent: "flex-start"}}>
@@ -27,7 +31,7 @@ export default function Messages(props : any) {
                                 <p className={"messages--message--text"}>{value.messageText}</p>
                                 <div className={"messages--message--wrapper--avatar"}>
                                     <div className={"messages--message--wrapper--avatar--img"} >
-                                        <p>{username?.at(0)}</p>
+                                        <p>{userName}</p>
                                     </div>
                                 </div>
                             </div>

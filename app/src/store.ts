@@ -6,19 +6,19 @@
 /// @license MIT
 
 import { configureStore } from '@reduxjs/toolkit';
-import { auxiliumBackendApiSlice } from './middleware';
+import { auxiliumBackendApi } from './middleware';
 import { messagesSliceReducer, sessionSliceReducer, userSliceReducer } from './slice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
   reducer: {
-    [auxiliumBackendApiSlice.reducerPath] : auxiliumBackendApiSlice.reducer,
+    [auxiliumBackendApi.reducerPath] : auxiliumBackendApi.reducer,
     user : userSliceReducer,
     sessions : sessionSliceReducer,
     messages : messagesSliceReducer,
   },
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(auxiliumBackendApiSlice.middleware)
+    getDefaultMiddleware().concat(auxiliumBackendApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -4,12 +4,10 @@ import {RootState, useAppSelector} from "../store";
 import {animated, config, useSpring} from "react-spring";
 import pattern from "../assets/pattern.webp";
 import {useEffect, useState} from "react";
-import Chat from "../components/chat";
+import Chat from "../components/Chat";
 
 export default function AppOutlet() {
     const [flag, setFlag] = useState(true)
-
-    const SESSIONS = useAppSelector((state : RootState) => state.sessions.values)
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -54,7 +52,7 @@ export default function AppOutlet() {
                 },
                 delay : window.location.href.substring(window.location.href.length - 3) != "app" ? 0 : 3000
             })}>
-                <Sidebar SESSIONS={SESSIONS}/>
+                <Sidebar/>
                 { window.location.href.substring(window.location.href.length - 3) != "app"
                     ? <Chat chatId={Number(window.location.href.substring(window.location.href.length - 1))}/>
                     : <></>

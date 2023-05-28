@@ -1,8 +1,8 @@
 // Re-exports
-import { auxiliumBackendApiSlice, useAuthQuery } from './auximBackend';
+import { auxiliumBackendApi, useGetMessagesQuery } from './auximBackend';
 
 export {
-  auxiliumBackendApiSlice,
-  useAuthQuery
+  auxiliumBackendApi,
+  useGetMessagesQuery
 };
 

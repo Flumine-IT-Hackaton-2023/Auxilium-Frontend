@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "socker.io": "^0.0.0-alpha-beta",
+    "socket.io-client": "^4.6.1"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.2",
@@ -18,6 +20,7 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-modal": "^3.16.0",
     "@types/react-redux": "^7.1.25",
+    "@types/socket.io": "^3.0.2",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "react-modal": "^3.16.1",
     "react-redux": "^8.0.5",
