@@ -18,7 +18,7 @@ export default function RegistrationPage() {
     const [username, setUsername] = useState<string | null>()
     const [email, setEmail] = useState<string | null>()
     const [password, setPassword] = useState<string | null>()
-    const [confirmPassword, setConfirmPassword] = useState<string | null>()
+    const [confirmPassword, setConfirmPassword] = useState<string | null>(); 
 
     const confirmPasswordValidation = (confirmPassword : any) => {
         return confirmPassword === password
@@ -145,10 +145,11 @@ export default function RegistrationPage() {
                                          config : config.slow
                                      })}
                                      onClick={ async () => {
-                                         const result = await useCreateUserQuery({ 
+                                        useCreateUserQuery({ 
                                             email: email as string, 
                                             login: username as string, 
-                                            password: password as string});
+                                            password: password as string
+                                        });
                                      }}
                     >Submit</animated.button>
                     <div className={'sign-in--container--form--text-wrapper'}>
